@@ -72,6 +72,13 @@ $app->routeMiddleware([
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
+
+/* for CORS */
+$app->middleware([
+    //...,Vluzrmos\LumenCors
+    'Vluzrmos\LumenCors\CorsMiddleware'
+]);
+
 /*
   |--------------------------------------------------------------------------
   | Register Service Providers

@@ -30,14 +30,14 @@ class ResponseController extends Controller {
      * @param type $code int <b>Código de respuestas HTTP</b>, default 404
      * @return json <b>Respuesta de la API en formato Json</b>
      */
-    public function sendError($error, $errorMessages = [], $code = 404) {
+    public function sendError($error, $errorMessages, $code = 404) {
         $response = [
             'success' => false,
-            'message' => $error,
+            'message' => $errorMessages,
         ];
 
         if (!empty($errorMessages)) {
-            $response['data'] = $errorMessages;
+            $response['data'] = $error;
         }
 
         return response()->json($response, $code);

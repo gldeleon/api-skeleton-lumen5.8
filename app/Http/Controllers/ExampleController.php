@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
-class ExampleController extends Controller
+use App\Http\Controllers\ResponseController as RC;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class ExampleController extends RC {
+
 {
     /**
      * Create a new controller instance.
@@ -12,6 +17,11 @@ class ExampleController extends Controller
     public function __construct()
     {
         //
+    }
+    
+    public function index() {
+        $result = Some_Model::where('enabled', '=', true)->get();
+        return $this->sendResponse($result, "ok", 200);
     }
 
     //
